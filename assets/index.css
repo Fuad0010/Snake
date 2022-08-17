@@ -1,14 +1,47 @@
-* {
-  padding: 0;
+* body {
+  height: 100vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  background-color: black;
 }
 
-* .asd {
-  width: 50px;
-  height: 50px;
-  background-color: red;
+* .game-board {
+  height: 100vmin;
+  width: 100vmin;
+  background-color: green;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[21];
+      grid-template-rows: repeat(21, 1fr);
+  -ms-grid-columns: (1fr)[21];
+      grid-template-columns: repeat(21, 1fr);
+}
+
+* .dirt {
+  height: 100vmin;
+  width: 100vmin;
+  position: absolute;
+  z-index: 1;
+}
+
+* .snake {
+  height: 5vmin;
+  width: 5vmin;
+  z-index: 2;
+}
+
+* .food {
+  background-color: aqua;
+  border: .25vmin solid black;
   z-index: 1;
 }
 /*# sourceMappingURL=index.css.map */
