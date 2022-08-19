@@ -34,8 +34,12 @@
 }
 
 * .snakeHeadImg {
-  height: 4.76vmin;
-  width: 4.76vmin;
+  height: 4px;
+  width: 4px;
+  z-index: 1;
+}
+
+* .snakeHeadDiv {
   z-index: 3;
 }
 

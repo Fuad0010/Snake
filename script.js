@@ -13,7 +13,7 @@ function main(currentTime){
     console.log(`Render`);
     lastRenderTime = currentTime;
 
-    update()
+    update()    
 
     draw()
 
