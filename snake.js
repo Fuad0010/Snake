@@ -5,7 +5,7 @@ const snakeBody = [
     { x: 11, y: 11 }
 ]   
 const snakeHead = [
-    { x: 11, y: 11 }
+    { x: 10, y: 11 }
 ]
 
 export function update(){
@@ -15,7 +15,7 @@ export function update(){
     }
     snakeBody[0].x += inputDirection.x;
     snakeBody[0].y += inputDirection.y;
-
+    
     for (let i = snakeHead.length - 2; i >= 0; i--){
         snakeHead[i + 1] = { ...snakeHead[i]}
     }
@@ -23,8 +23,11 @@ export function update(){
     snakeHead[0].y += inputDirection.y;
 }
 
-const snakeHeadDiv = document.createElement('div');
+    const snakeHeadImg = document.createElement('img');
+    snakeHeadImg.src = "/assets/img/snakeHead.png";
 
+
+    
 export function draw(gameBoard){
     snakeBody.forEach(segment => {
         
@@ -36,23 +39,29 @@ export function draw(gameBoard){
         snakeElement.style.gridRowStart = segment.x;
         snakeElement.style.gridColumnStart = segment.y;
         
-        snakeHeadDiv.style.gridRowStart = segment.x;
-        snakeHeadDiv.style.gridColumnStart = segment.y;
         
         snakeElement.classList.add('snake');
-        snakeHeadDiv.classList.add('snakeHeadDiv');
         
         gameBoard.appendChild(snakeElement);
-        gameBoard.appendChild(snakeHeadDiv);
+
+        
+    })
+    snakeHead.forEach(segment => {
+
+        
+        
+        
+        
+        snakeHeadImg.style.gridRowStart = segment.x;
+        snakeHeadImg.style.gridColumnStart = segment.y;
+        
+        snakeHeadImg.classList.add('snakeHeadImg');
+        
+        gameBoard.appendChild(snakeHeadImg);
 
         
     })
 }
-
-    const snakeHeadImg = document.createElement('img')
-    snakeHeadImg.src = "/assets/img/snakeHead.png";
-    snakeHeadDiv.classList.add('snakeHeadImg');
-    snakeHeadDiv.appendChild(snakeHeadImg);
 
 
 
@@ -65,8 +74,6 @@ window.addEventListener('keydown',e =>{
             if(lastInputDirection.y !== 0) break
             inputDirection = {x: 0, y: -1}
             snakeHeadImg.style.transform = "rotate(-90deg)";
-            snakeHeadImg.style.height = "4.76vmin"
-            snakeHeadImg.style.width = "4.76vmin"
             break
         case 'ArrowRight':
             if(lastInputDirection.y !== 0) break

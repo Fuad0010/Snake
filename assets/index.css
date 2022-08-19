@@ -34,9 +34,9 @@
 }
 
 * .snakeHeadImg {
-  height: 4px;
-  width: 4px;
-  z-index: 1;
+  height: 4.76vmin;
+  width: 4.76vmin;
+  z-index: 4;
 }
 
 * .snakeHeadDiv {
