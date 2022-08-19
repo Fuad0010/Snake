@@ -26,9 +26,19 @@
         z-index: 1;
     }
 
+
+    .snakeHeadImg{
+        height: 4.76vmin; 
+        width: 4.76vmin;
+        // border: .25vmin solid black;
+        // background-color: aqua;
+        z-index: 3;
+    }
     .snake{
-        height: 5vmin; 
-        width: 5vmin;
+        height: 4.76vmin; 
+        width: 4.76vmin;
+        // border: .25vmin solid black;
+        // background-color: aqua;
         z-index: 2;
     }
  
