@@ -7,6 +7,9 @@ const snakeBody = [
 const snakeHead = [
     { x: 10, y: 11 }
 ]
+const snakeTail = [
+    { x: 12, y: 11 }
+]
 
 export function update(){
     const inputDirection = getInputDirection();
@@ -21,6 +24,12 @@ export function update(){
     }
     snakeHead[0].x += inputDirection.x;
     snakeHead[0].y += inputDirection.y;
+
+    for (let i = snakeTail.length - 2; i >= 0; i--){
+        snakeTail[i + 1] = { ...snakeTail[i]}
+    }
+    snakeTail[0].x += inputDirection.x;
+    snakeTail[0].y += inputDirection.y;
 }
 
     const snakeHeadImg = document.createElement('img');
@@ -43,6 +52,23 @@ export function draw(gameBoard){
         snakeElement.classList.add('snake');
         
         gameBoard.appendChild(snakeElement);
+
+        
+    })
+    snakeTail.forEach(segment => {
+        
+        
+        
+        const snakeTail = document.createElement('img');
+        snakeTail.src = "/assets/img/snakeTail.png";
+        
+        snakeTail.style.gridRowStart = segment.x;
+        snakeTail.style.gridColumnStart = segment.y;
+        
+        
+        snakeTail.classList.add('snake');
+        
+        gameBoard.appendChild(snakeTail);
 
         
     })
