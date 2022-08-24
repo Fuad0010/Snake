@@ -1,9 +1,11 @@
 // import { getInputDirection } from "./assets/input.js";
 
-export const SNAKE_SPEED = 2;
+export const SNAKE_SPEED = 7;
 const snakeBody = [
     { x: 11, y: 11 }
 ]   
+let newSegments = 0;
+
 const snakeHead = [
     { x: 10, y: 11 }
 ]
@@ -12,6 +14,7 @@ const snakeTail = [
 ]
 
 export function update(){
+    addSegments()
     const inputDirection = getInputDirection();
     for (let i = snakeBody.length - 2; i >= 0; i--){
         snakeBody[i + 1] = { ...snakeBody[i]}
@@ -122,4 +125,27 @@ window.addEventListener('keydown',e =>{
 export function getInputDirection(){
     lastInputDirection = inputDirection;
     return inputDirection;
+}
+
+export function expandSnake(amount){
+    newSegments += amount
+}
+
+export function onSnake(position){
+    return snakeHead.some(segment => {
+        return equalPositions(segment, position)
+    })
+}
+
+function equalPositions(pos1, pos2){
+    return (
+        pos1.x === pos2.x && pos1.y === pos2.y
+    )
+}
+
+function addSegments(){
+    for (let i = 0; i < newSegments; i++) {
+        snakeBody.push({ ...snakeBody[snakeBody.length -1]}) 
+    }
+    newSegments = 0;
 }

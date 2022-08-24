@@ -39,6 +39,12 @@
   z-index: 4;
 }
 
+* .redAppleImg {
+  height: 4.76vmin;
+  width: 4.76vmin;
+  z-index: 3;
+}
+
 * .snakeHeadDiv {
   z-index: 3;
 }
@@ -47,11 +53,5 @@
   height: 4.76vmin;
   width: 4.76vmin;
   z-index: 2;
-}
-
-* .food {
-  background-color: aqua;
-  border: .25vmin solid black;
-  z-index: 1;
 }
 /*# sourceMappingURL=index.css.map */
