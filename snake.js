@@ -10,7 +10,7 @@ const snakeHead = [
     { x: 11, y: 11 }
 ]
 const snakeTail = [
-    { x: 12, y: 11 }
+    { x: 11, y: 11 }
 ]
 
 export function update(){
@@ -37,12 +37,11 @@ export function update(){
 
     const snakeHeadImg = document.createElement('img');
     snakeHeadImg.src = "/assets/img/snakeHead.png";
+    const snakeTailImg = document.createElement('img');
 
-
-    
 export function draw(gameBoard){
     snakeBody.forEach(segment => {
-        
+
         
         
         const snakeElement = document.createElement('img');
@@ -62,16 +61,15 @@ export function draw(gameBoard){
         
         
         
-        const snakeTail = document.createElement('img');
-        snakeTail.src = "/assets/img/snakeTail.png";
+        snakeTailImg.src = "/assets/img/snakeTail.png";
         
-        snakeTail.style.gridRowStart = segment.x;
-        snakeTail.style.gridColumnStart = segment.y;
+        snakeTailImg.style.gridRowStart = segment.x;
+        snakeTailImg.style.gridColumnStart = segment.y;
         
         
-        snakeTail.classList.add('snake');
+        snakeTailImg.classList.add('snake');
         
-        gameBoard.appendChild(snakeTail);
+        gameBoard.appendChild(snakeTailImg);
 
         
     })
@@ -88,9 +86,9 @@ export function draw(gameBoard){
         
         gameBoard.appendChild(snakeHeadImg);
 
-        
     })
 }
+
 
 
 
@@ -103,21 +101,25 @@ window.addEventListener('keydown',e =>{
             if(lastInputDirection.y !== 0) break
             inputDirection = {x: 0, y: -1}
             snakeHeadImg.style.transform = "rotate(-90deg)";
+            snakeTailImg.style.transform = "rotate(-90deg)";
             break
         case 'ArrowRight':
             if(lastInputDirection.y !== 0) break
             inputDirection = {x: 0, y: 1}
             snakeHeadImg.style.transform = "rotate(90deg)";
+            snakeTailImg.style.transform = "rotate(90deg)";
             break 
         case 'ArrowUp':
             if(lastInputDirection.x !== 0) break
             inputDirection = {x: -1, y: 0}
             snakeHeadImg.style.transform = "rotate(0deg)";
+            snakeTailImg.style.transform = "rotate(0deg)";
             break 
         case 'ArrowDown':
             if(lastInputDirection.x !== 0) break
             inputDirection = {x: 1, y: 0}
             snakeHeadImg.style.transform = "rotate(-180deg)";
+            snakeTailImg.style.transform = "rotate(-180deg)";
             break 
     }
 })
@@ -143,8 +145,9 @@ function equalPositions(pos1, pos2){
     )
 }
 
-function addSegments(){
+function addSegments(){ 
     for (let i = 0; i < newSegments; i++) {
+        snakeTail.push({ ...snakeTail[snakeTail.length -1]}) 
         snakeBody.push({ ...snakeBody[snakeBody.length -1]}) 
     }
     newSegments = 0;
