@@ -7,7 +7,7 @@ const snakeBody = [
 let newSegments = 0;
 
 const snakeHead = [
-    { x: 10, y: 11 }
+    { x: 11, y: 11 }
 ]
 const snakeTail = [
     { x: 12, y: 11 }
